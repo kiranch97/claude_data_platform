@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  namespace: data-platform
+  labels:
+    app: pgadmin
+    project: claude-data-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+      - name: pgadmin
+        image: dpage/pgadmin4:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: PGADMIN_DEFAULT_EMAIL
+          value: admin@admin.com
+        - name: PGADMIN_DEFAULT_PASSWORD
+          value: admin
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgadmin-nodeport
+  namespace: data-platform
+  labels:
+    app: pgadmin
+spec:
+  type: NodePort
+  selector:
+    app: pgadmin
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30092   # pgAdmin UI: http://localhost:30092
