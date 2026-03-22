@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="Arial, sans-serif">
+  <rect width="900" height="480" fill="#f8f9fa" rx="8"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e1e1e">claude_data_platform — Data Platform</text>
+  <text x="450" y="48" text-anchor="middle" font-size="12" fill="#6c757d">MinIO Object Store + PostgreSQL + pgAdmin on Kubernetes</text>
+
+  <!-- Users -->
+  <rect x="100" y="70" width="200" height="40" fill="#a5d8ff" rx="6" stroke="#4a9eed"/>
+  <text x="200" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f">Data Scientists</text>
+  <text x="200" y="103" text-anchor="middle" font-size="11" fill="#1e3a5f">Jupyter / Airflow</text>
+  <rect x="600" y="70" width="200" height="40" fill="#a5d8ff" rx="6" stroke="#4a9eed"/>
+  <text x="700" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f">DBAs / Analysts</text>
+  <text x="700" y="103" text-anchor="middle" font-size="11" fill="#1e3a5f">pgAdmin UI</text>
+
+  <!-- Namespace box -->
+  <rect x="50" y="130" width="800" height="300" fill="#d3f9d8" rx="8" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+  <text x="80" y="150" font-size="13" font-weight="bold" fill="#15803d">Namespace: data-platform</text>
+
+  <!-- MinIO -->
+  <rect x="80" y="160" width="320" height="230" fill="#b2f2bb" rx="6" stroke="#22c55e" stroke-width="2"/>
+  <text x="240" y="185" text-anchor="middle" font-size="14" font-weight="bold" fill="#14532d">MinIO Object Store</text>
+  <text x="240" y="203" text-anchor="middle" font-size="12" fill="#14532d">minio/minio:latest | PVC: 20Gi</text>
+  <text x="240" y="220" text-anchor="middle" font-size="12" fill="#14532d">API: 9000 | Console: 9001 (NP:30091)</text>
+  <rect x="100" y="235" width="280" height="26" fill="#c3fae8" rx="4"/>
+  <text x="240" y="252" text-anchor="middle" font-size="11" fill="#0f766e">Buckets:</text>
+  <rect x="100" y="268" width="130" height="24" fill="white" rx="3" stroke="#22c55e"/>
+  <text x="165" y="284" text-anchor="middle" font-size="11" fill="#14532d">raw-data</text>
+  <rect x="240" y="268" width="140" height="24" fill="white" rx="3" stroke="#22c55e"/>
+  <text x="310" y="284" text-anchor="middle" font-size="11" fill="#14532d">processed-data</text>
+  <rect x="100" y="300" width="130" height="24" fill="white" rx="3" stroke="#22c55e"/>
+  <text x="165" y="316" text-anchor="middle" font-size="11" fill="#14532d">model-artifacts</text>
+  <rect x="240" y="300" width="140" height="24" fill="white" rx="3" stroke="#22c55e"/>
+  <text x="310" y="316" text-anchor="middle" font-size="11" fill="#14532d">notebooks-output</text>
+  <text x="240" y="355" text-anchor="middle" font-size="11" fill="#0f766e">S3 endpoint: minio.data-platform.svc:9000</text>
+  <text x="240" y="370" text-anchor="middle" font-size="11" fill="#0f766e">Access: minioadmin / minioadmin</text>
+
+  <!-- PostgreSQL + pgAdmin -->
+  <rect x="450" y="160" width="350" height="110" fill="#a5d8ff" rx="6" stroke="#4a9eed" stroke-width="2"/>
+  <text x="625" y="183" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a5f">PostgreSQL 15</text>
+  <text x="625" y="200" text-anchor="middle" font-size="12" fill="#1e3a5f">postgres:15-alpine | PVC: 10Gi</text>
+  <text x="625" y="217" text-anchor="middle" font-size="12" fill="#1e3a5f">DB: dataplatform | Port: 5432 (NP:30093)</text>
+  <text x="625" y="235" text-anchor="middle" font-size="11" fill="#1e3a5f">User: postgres / postgres</text>
+  <text x="625" y="252" text-anchor="middle" font-size="10" fill="#2563eb">Host: postgres.data-platform.svc:5432</text>
+
+  <rect x="450" y="285" width="350" height="90" fill="#ffd8a8" rx="6" stroke="#f59e0b" stroke-width="2"/>
+  <text x="625" y="307" text-anchor="middle" font-size="14" font-weight="bold" fill="#713f12">pgAdmin 4</text>
+  <text x="625" y="324" text-anchor="middle" font-size="12" fill="#713f12">dpage/pgadmin4:latest</text>
+  <text x="625" y="341" text-anchor="middle" font-size="12" fill="#713f12">Web UI | NodePort: 30092</text>
+  <text x="625" y="358" text-anchor="middle" font-size="11" fill="#713f12">Login: admin@admin.com / admin</text>
+
+  <!-- Connection arrows -->
+  <line x1="200" y1="110" x2="200" y2="160" stroke="#4a9eed" stroke-width="2"/>
+  <line x1="700" y1="110" x2="700" y2="285" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Access summary -->
+  <rect x="50" y="445" width="800" height="25" fill="#fff3bf" rx="4" stroke="#f59e0b"/>
+  <text x="450" y="462" text-anchor="middle" font-size="11" fill="#713f12">MinIO: localhost:30091 | PostgreSQL: localhost:30093 | pgAdmin: localhost:30092</text>
+</svg>
